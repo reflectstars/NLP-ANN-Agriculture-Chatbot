@@ -16,3 +16,25 @@ from keras.utils import np_utils
 from keras.models import load_model
 import tensorflow
 
+
+
+
+def trainIntentModel():
+    # Load the dataset and prepare it to the train the model
+
+    # Importing dataset and splitting into words and labels
+    dataset = pd.read_csv('datasets/intent.csv', names=["Query", "Intent"])
+
+    X = dataset["Query"]
+    y = dataset["Intent"]
+
+    unique_intent_list = list(set(y))
+
+    print("Intent Dataset successfully loaded!")
+    
+    # Clean and prepare the intents corpus
+    queryCorpus = []
+    ps = PorterStemmer()
+
+    for query in X:
+        query = re.sub('[^a-zA-Z]', ' ', query)
