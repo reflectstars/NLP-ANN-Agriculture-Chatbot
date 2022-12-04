@@ -38,3 +38,25 @@ def trainIntentModel():
 
     for query in X:
         query = re.sub('[^a-zA-Z]', ' ', query)
+
+        # Tokenize sentence
+        query = query.split(' ')
+
+        # Lemmatizing
+        tokenized_query = [ps.stem(word.lower()) for word in query]
+
+        # Recreate the sentence from tokens
+        tokenized_query = ' '.join(tokenized_query)
+
+        # Add to corpus
+        queryCorpus.append(tokenized_query)
+        
+    print(queryCorpus)
+    print("Corpus created")
+    
+    countVectorizer= CountVectorizer(max_features=800)
+    corpus = countVectorizer.fit_transform(queryCorpus).toarray()
+    print(corpus.shape)
+    print("Bag of words created!")
+    
+    # Save the CountVectorizer
