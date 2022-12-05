@@ -119,3 +119,33 @@ def trainEntityModel():
     y = dataset.iloc[:, 1].values
 #     X = X.reshape(630,)
     print(X)
+    print("Entity Dataset successfully loaded!")
+
+    entityCorpus=[]
+    ps = PorterStemmer()
+
+    # Stem words in X
+    for word in X.astype(str):
+        word = [ps.stem(word[0])]
+        entityCorpus.append(word)
+    
+    print(entityCorpus)
+    X = entityCorpus
+    from numpy import array
+    X = array(X)
+    X = X.reshape(len(X),)
+    
+    # Create a bag of words model for words
+    from sklearn.feature_extraction.text import CountVectorizer
+    cv = CountVectorizer(max_features=1500)
+#     X = cv.fit_transform(X.astype('U')).toarray()
+    X = cv.fit_transform(X).toarray()
+    print("Entity Bag of words created!")
+    
+    # Save CountVectorizer state
+    pk.dump(cv, open('saved_state/EntityCountVectorizer.sav', 'wb'))
+    print("Entity CountVectorizer state saved!")
+    
+    # Encoding categorical data of labels
+    labelencoder_y = LabelEncoder()
+    y = labelencoder_y.fit_transform(y.astype(str))
