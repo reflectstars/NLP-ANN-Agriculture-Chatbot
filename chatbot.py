@@ -149,3 +149,30 @@ def trainEntityModel():
     # Encoding categorical data of labels
     labelencoder_y = LabelEncoder()
     y = labelencoder_y.fit_transform(y.astype(str))
+    print("Encoded the entity classes!")
+    
+    # Return a dict mapping labels to their integer values
+    res = {}
+    for cl in labelencoder_y.classes_:
+        res.update({cl:labelencoder_y.transform([cl])[0]})
+    entity_label_map = res
+    print("Entity Label mapping obtained!")
+    
+    # Fit classifier to dataset
+    classifier = GaussianNB()
+    classifier.fit(X, y)
+    print("Entity Model trained successfully!")
+    
+    # Save the entity classifier model
+    pk.dump(classifier, open('saved_state/entity_model.sav', 'wb'))
+    print("Trained entity model saved!")
+    
+    return entity_label_map
+
+
+
+
+# Load Entity model
+entity_label_map = trainEntityModel()
+
+loadedEntityCV = pk.load(open('saved_state/EntityCountVectorizer.sav', 'rb'))
