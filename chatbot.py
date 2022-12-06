@@ -176,3 +176,28 @@ def trainEntityModel():
 entity_label_map = trainEntityModel()
 
 loadedEntityCV = pk.load(open('saved_state/EntityCountVectorizer.sav', 'rb'))
+loadedEntityClassifier = pk.load(open('saved_state/entity_model.sav', 'rb'))
+
+
+
+
+def getEntities(query):
+    query = loadedEntityCV.transform(query).toarray()
+    
+    response_tags = loadedEntityClassifier.predict(query)
+    
+    entity_list=[]
+    for tag in response_tags:
+        if tag in entity_label_map.values():
+            entity_list.append(list(entity_label_map.keys())[list(entity_label_map.values()).index(tag)])
+
+    return entity_list
+
+
+
+
+
+import json
+import random
+
+with open('datasets/intents.json') as json_data:
