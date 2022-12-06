@@ -230,3 +230,22 @@ while True:
     # Make the prediction
     predicted_Intent = loadedIntentClassifier.predict(processed_text)
 #     print(predicted_Intent)
+    result = np.argmax(predicted_Intent, axis=1)
+    
+    for key, value in intent_label_map.items():
+        if value==result[0]:
+            #print(key)
+            USER_INTENT = key
+            break
+        
+    for i in intents['intents']:
+        if i['tag'] == USER_INTENT:
+            print(random.choice(i['responses']))
+
+            
+    # Extract entities from text
+    entities = getEntities(tokenized_query)
+    
+    # Mapping between tokens and entity tags
+    token_entity_map = dict(zip(entities, tokenized_query))
+    # print(token_entity_map)
