@@ -339,3 +339,17 @@ market,SW
 price,COST
 of,SW
 rice,CROP
+?,.
+how,SW
+much,SW
+is,SW
+the,SW
+cost,COST
+of,SW
+10,QTY
+kg,MSR
+of,SW
+wheat,CROP
+?,.
+what,SW
+are,SW
