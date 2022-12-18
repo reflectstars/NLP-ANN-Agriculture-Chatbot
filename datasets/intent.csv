@@ -1,3 +1,5 @@
 Query,Intent
 Hello bot!,greeting
-Hi,greeti
+Hi,greeting
+Hello!,greeting
+Hey th
