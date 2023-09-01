@@ -39,3 +39,24 @@
 	{"tag": "wellness",
          "patterns": ["How are you?", "How you doing?", "How are you doing?","Are you doing well?", "Are you okay?" ,"Are you fine?","Are you doing okay?"],
          "responses": ["i'm cool.", "always cool.", "i'm ok.", "i'm fine."]
+        },
+	{"tag": "enquireaboutday",
+         "patterns": ["How was your day?", "How is your day going?", "How is your day?"],
+         "responses": ["It's been great.", "It's been good."]
+        },
+	{"tag": "askinghelp",
+         "patterns": ["I need help!", "Need help!", "Help me please", "Help me", "Can you do something for me?", "Answer my question"],
+         "responses": ["i'm here to help you.", "i can help you.", "i'm here to solve your queries."]
+        },
+	{"tag": "outofscope",
+         "patterns": ["Who is the President?", "Who is the Prime Minister?", "What is my mother's name?", "Are you a supporter of BJP?", "Are you active in politics?"],
+         "responses": ["your question is out of my knowledge.", "i'm not able to answer your question.", "i don't have knowledge about that."]
+        },
+	{"tag": "cottonweather",
+         "patterns": ["which weather is suitable for cotton?", "what is temperature for cotton crop?", "cotton crop grows in which temperature?", "temprature for cotton ", "temperature require for cotton crop?"],
+         "responses": ["During active growth, the ideal air temperature is 70 to 100°F (21-37°C).", "ideal air temperature is 70 to 100°F.", "21-37°C temperature is required."]
+        },
+	{"tag": "cottoncondition",
+         "patterns": ["which condition is suitable for cotton crop?", "which condition required for cotton crop?", "condition for cotton crop", "condition suitable for cotton", "condition for more cotton crop production"],
+         "responses": ["It require a lot of heat and plenty of sunshine.", "It prefers warm and humid climate.","Cotton is a plant that needs a long frost-free period."]
+        },
