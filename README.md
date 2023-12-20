@@ -1,2 +1,2 @@
 # NLP-ANN-Agriculture-Chatbot
-An agriculture-focus
+An agriculture-focused chatbot developed 
